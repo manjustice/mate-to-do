@@ -7,7 +7,7 @@ from .forms import TagForm, TaskForm
 
 
 def index(request, *args, **kwargs):
-    tasks = Task.objects.all()
+    tasks = Task.objects.prefetch_related("tags")
     context = {
         "tasks": tasks,
     }
